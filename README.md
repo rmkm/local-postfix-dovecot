@@ -1,10 +1,12 @@
 # local-postfix-dovecot
 SMTP and POP3 mail server for local network and testing
+
 # Feature
 - The container publishes port 25(SMTP) and 110(POP3)
 - No IPv6
 - Plain text auth for POP3
 - No SSL
+
 # Install
 1. `git clone https://github.com/rmkm/local-postfix-dovecot.git`
 1. Modify ```main.cf``` and add your local domain  
@@ -26,3 +28,9 @@ mydestination = $myhostname, localhost.$mydomain, localhost, **example.local** #
     from: `user1@example.local`  
     to: `user1@example.local`  
     any title and body text  
+
+# Commands
+- List all non-default users  
+`docker exec mypostfix awk -F: '($3>=1000)&&($1!="nobody"){print $1}' /etc/passwd`
+- Delete a user  
+`docker exec mypostfix userdel -r [username]`

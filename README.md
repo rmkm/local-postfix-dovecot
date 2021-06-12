@@ -1,6 +1,6 @@
 # local-postfix-dovecot
 SMTP and POP3 mail server for local network and testing
-# Feagure
+# Feature
 - The container publishes port 25(SMTP) and 110(POP3)
 - No IPv6
 - Plain text auth for POP3

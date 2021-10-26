@@ -3,6 +3,12 @@
 IMAGE_NAME=postfix-dovecot
 CONTAINER_NAME=mypostfix
 
+if [ "$(docker container ls -q -a -f name="$CONTAINER_NAME")" ]; then
+    echo "Image ${NAME_IMAGE} already exist."
+    docker start $CONTAINER_NAME
+    exit
+fi
+
 docker build -t $IMAGE_NAME .
 
 docker run \
